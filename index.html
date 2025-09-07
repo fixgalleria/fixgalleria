@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fixgalleria Image Generation</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0"
+  }
+}
+</script>
+</head>
+<body>
+  <main>
+    <h1>Fixgalleria Image Generation</h1>
+    <p>Enter a prompt to generate an image using AI.</p>
+    <div class="prompt-container">
+      <input type="text" id="prompt-input" placeholder="e.g., A futuristic cityscape at sunset" aria-label="Image prompt">
+      <button id="generate-button">Generate</button>
+    </div>
+    <fieldset class="aspect-ratio-selector" aria-label="Select image aspect ratio">
+      <legend>Aspect Ratio</legend>
+      <div>
+        <input type="radio" id="ar-1-1" name="aspect-ratio" value="1:1" checked>
+        <label for="ar-1-1">1:1</label>
+      </div>
+      <div>
+        <input type="radio" id="ar-16-9" name="aspect-ratio" value="16:9">
+        <label for="ar-16-9">16:9</label>
+      </div>
+      <div>
+        <input type="radio" id="ar-9-16" name="aspect-ratio" value="9:16">
+        <label for="ar-9-16">9:16</label>
+      </div>
+    </fieldset>
+    <div id="result-container" role="status" aria-live="polite">
+      <div id="loader" class="loader" style="display: none;"></div>
+      <div id="image-container"></div>
+    </div>
+    
+    <hr>
+    
+    <section class="todo-section">
+      <h2>To-Do List</h2>
+      <form id="todo-form" aria-label="Add new task">
+        <input type="text" id="todo-input" placeholder="e.g., Schedule a meeting" aria-label="New task input" />
+        <button id="add-todo-button" type="submit">
+          <span id="add-todo-button-text">Add Task</span>
+        </button>
+      </form>
+      <div id="todo-loader" class="loader-container" style="display: none;">
+        <div class="loader"></div>
+      </div>
+      <ul id="todo-list" aria-live="polite"></ul>
+    </section>
+  </main>
+  <script type="module" src="index.tsx"></script>
+</body>
+</html>
